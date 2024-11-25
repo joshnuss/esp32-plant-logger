@@ -9,7 +9,7 @@ Logs temperature, humidity and moisture of plant soil using MicroPython.
 - Temperature sensor: [DHT20](http://www.aosong.com/userfiles/files/media/Data%20Sheet%20DHT20%20%20A1.pdf)
 - Moisture/humidity sensor: [Geekus Soil Sensor](https://abra-electronics.com/sensors/sensors-temperature-en/gk-as-shm-geeekus-soil-moisture-humidity-detection-sensor-module.html)
 - Micro SD slot: [3.3V Mini TF](https://abra-electronics.com/robotics-embedded-electronics/breakout-boards/storage/bb-microsd-tf-micro-sd-card-board-3-3v-mini-tf.html)
-- Micro SD Card
+- Micro SD Card: Any card, formatted to FAT32 without any partitions.
 
 ## Pinout
 
