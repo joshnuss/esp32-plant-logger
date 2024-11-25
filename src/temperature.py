@@ -2,7 +2,7 @@
 from machine import I2C, Pin, SoftI2C
 from utime import sleep_ms
 
-class DHT20:
+class TempSensor:
     """Class for the DHT20 Temperature and Humidity Sensor.
 
     The datasheet can be found at http://www.aosong.com/userfiles/files/media/Data%20Sheet%20DHT20%20%20A1.pdf
@@ -65,7 +65,7 @@ class DHT20:
         return '1' not in ''.join(input_padded_array)[len_input:]
 
     @property
-    def measurements(self) -> dict:
+    def values(self) -> dict:
         """Get the temperature (°C) and relative humidity (%RH).
 
         Returns a dictionary with the most recent measurements.

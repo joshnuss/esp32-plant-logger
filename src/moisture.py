@@ -6,6 +6,6 @@ class MoistureSensor:
         self.adc = ADC(pin)
 
     @property
-    def measurement(self):
+    def value(self):
         return self.adc.read_u16()
 

@@ -1,45 +1,43 @@
-from dht20 import DHT20
+from temperature import TempSensor
 from moisture import MoistureSensor
-from machine import Pin, Timer, SoftI2C, RTC, SDCard, PWM
+from logger import Logger
+from indicator import Indicator
+from machine import Pin, Timer, SoftI2C, RTC, SDCard
 import os
 import time
 import micropython
+import date
 
-rtc = RTC()
-i2c = SoftI2C(scl=Pin(14), sda=Pin(13))
-temp = DHT20(0x38, i2c)
-moisture = MoistureSensor(pin=Pin(36))
-led = Pin(2, mode=Pin.OUT)
 sd = SDCard(slot=2, freq=5000000)
 os.mount(sd, '/sd')
 
-def flicker():
-    pwm = PWM(led, freq=10)
-    time.sleep_ms(500)
-    pwm.deinit()
-
-def format_date(date):
-    return f"{date[0]:04}-{date[1]:02}-{date[2]:02} {date[4]:02}:{date[5]:02}:{date[6]:02}"
+rtc = RTC()
+i2c = SoftI2C(scl=Pin(14), sda=Pin(13))
+temp = TempSensor(0x38, i2c)
+moisture = MoistureSensor(pin=Pin(36))
+indicator = Indicator()
+logger = Logger()
 
 def measure(_name):
-    temp_values = temp.measurements
-    moisture_value = moisture.measurement
-    date = rtc.datetime()
+    temp_values = temp.values
+    datetime = rtc.datetime()
 
-    file = open('/sd/temp.csv', 'a')
-    file.write(f"{format_date(date)},{temp_values['t']}°C,{temp_values['rh']}%,{moisture_value}\n")
-    file.close()
+    logger.log([
+        date.format(datetime),
+        f"{temp_values['t']}°C",
+        f"{temp_values['rh']}%",
+        str(moisture.value)
+    ])
 
-    flicker()
+    indicator.flicker()
 
 def callback(_timer):
     micropython.schedule(measure, 'measure')
 
 timer = Timer(0)
-timer.init(period=30000, mode=Timer.PERIODIC, callback=callback)
+timer.init(period=3000, mode=Timer.PERIODIC, callback=callback)
 
-flicker()
+indicator.flicker()
 
 while True:
     time.sleep(1000)
-
