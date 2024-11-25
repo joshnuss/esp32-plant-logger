@@ -13,15 +13,16 @@ Logs temperature, humidity and moisture of plant soil using MicroPython.
 
 ## Pinout
 
-| Component | Pin Name | Pin # |
-| -------   | ---      | ----  |
-| SD Card   | MISO     | 19    |
-| SD Card   | MOSI     | 23    |
-| SD Card   | SCK      | 18    |
-| SD Card   | CS       | 5     |
-| DHT20     | SCL      | 14    |
-| DHT20     | SDA      | 13    |
-| Moisture  | ADC      | 36    |
+| Component    | Pin Name | Pin # |
+| -------      | ---      | ----  |
+| SD Card      | MISO     | 19    |
+| SD Card      | MOSI     | 23    |
+| SD Card      | SCK      | 18    |
+| SD Card      | CS       | 5     |
+| DHT20        | SCL      | 14    |
+| DHT20        | SDA      | 13    |
+| Moisture     | ADC      | 36    |
+| Built-in LED |          | 2     |
 
 ## Setup
 
@@ -59,6 +60,10 @@ Copy `*.py` files to device
 ```sh
 mpremote fs cp src/*.py :
 ```
+
+### Usage
+
+Add SD-card and reboot device. The LED will flicker every 30 seconds as data is collected.
 
 ## License
 
