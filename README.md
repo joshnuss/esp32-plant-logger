@@ -11,6 +11,18 @@ Logs temperature, humidity and moisture of plant soil using MicroPython.
 - Micro SD slot: [3.3V Mini TF](https://abra-electronics.com/robotics-embedded-electronics/breakout-boards/storage/bb-microsd-tf-micro-sd-card-board-3-3v-mini-tf.html)
 - Micro SD Card
 
+## Pinout
+
+| Component | Pin Name | Pin # |
+| -------   | ---      | ----  |
+| SD Card   | MISO     | 19    |
+| SD Card   | MOSI     | 23    |
+| SD Card   | SCK      | 18    |
+| SD Card   | CS       | 5     |
+| DHT20     | SCL      | 14    |
+| DHT20     | SDA      | 13    |
+| Moisture  | ADC      | 36    |
+
 ## Setup
 
 ### Erase flash
