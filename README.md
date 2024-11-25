@@ -3,6 +3,8 @@ ESP32 Plant Logger
 
 Logs temperature, humidity and moisture of plant soil using MicroPython.
 
+![assembled circuit board](image.png)
+
 ## Components
 
 - Microcontroller: [ESP-WROOM32 DEVKIT 1](https://embedded-systems-design.github.io/overview-of-the-esp32-devkit-doit-v1)
