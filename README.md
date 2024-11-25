@@ -48,9 +48,15 @@ esptool.py --chip esp32 -b 460800 --before default_reset --after hard_reset writ
 
 ### Copy code
 
+Initial RTC clock:
+
+```sh
+mpremote rtc --set
+```
+
 Copy `*.py` files to device
 
-```
+```sh
 mpremote fs cp src/*.py :
 ```
 
