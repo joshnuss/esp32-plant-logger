@@ -16,7 +16,7 @@ i2c = SoftI2C(scl=Pin(14), sda=Pin(13))
 temp = TempSensor(0x38, i2c)
 moisture = MoistureSensor(pin=Pin(36))
 indicator = Indicator()
-logger = Logger()
+logger = Logger(path='/sd/temp.csv')
 
 def measure(_name):
     temp_values = temp.values
