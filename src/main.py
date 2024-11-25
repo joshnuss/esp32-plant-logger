@@ -36,7 +36,7 @@ def callback(_timer):
     micropython.schedule(measure, 'measure')
 
 timer = Timer(0)
-timer.init(period=3000, mode=Timer.PERIODIC, callback=callback)
+timer.init(period=30000, mode=Timer.PERIODIC, callback=callback)
 
 flicker()
 
