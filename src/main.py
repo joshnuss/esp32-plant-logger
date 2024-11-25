@@ -1,7 +1,7 @@
 from temperature import TempSensor
 from moisture import MoistureSensor
 from logger import Logger
-from indicator import Indicator
+from led import LED
 from machine import Pin, Timer, SoftI2C, RTC, SDCard
 import os
 import time
@@ -15,7 +15,7 @@ rtc = RTC()
 i2c = SoftI2C(scl=Pin(14), sda=Pin(13))
 temp = TempSensor(0x38, i2c)
 moisture = MoistureSensor(pin=Pin(36))
-indicator = Indicator()
+led = LED()
 logger = Logger(path='/sd/temp.csv')
 
 def measure(_name):
@@ -29,7 +29,7 @@ def measure(_name):
         str(moisture.value)
     ])
 
-    indicator.flicker()
+    led.flicker()
 
 def callback(_timer):
     micropython.schedule(measure, 'measure')
@@ -37,7 +37,7 @@ def callback(_timer):
 timer = Timer(0)
 timer.init(period=3000, mode=Timer.PERIODIC, callback=callback)
 
-indicator.flicker()
+led.flicker()
 
 while True:
     time.sleep(1000)

@@ -1,14 +1,14 @@
 from machine import Pin, PWM
 import time
 
-class Indicator:
+class LED:
     def __init__(self, pin=2, freq=10, duration=500):
-        self.led = Pin(pin, mode=Pin.OUT)
+        self.pin = Pin(pin, mode=Pin.OUT)
         self.freq = freq
         self.duration = duration
 
     def flicker(self):
-        pwm = PWM(self.led, freq=self.freq)
+        pwm = PWM(self.pin, freq=self.freq)
         time.sleep_ms(self.duration)
         pwm.deinit()
 
