@@ -8,9 +8,9 @@ import time
 import micropython
 import date
 
-LOG_FREQUENCY_MS = 30000
+LOG_FREQUENCY_MS = 30_000
 
-sd = SDCard(slot=2, freq=5000000)
+sd = SDCard(slot=2, freq=5_000_000)
 os.mount(sd, '/sd')
 
 rtc = RTC()
@@ -42,4 +42,4 @@ timer.init(period=LOG_FREQUENCY_MS, mode=Timer.PERIODIC, callback=callback)
 led.pulse()
 
 while True:
-    time.sleep(1000)
+    time.sleep(1_000)
