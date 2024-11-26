@@ -8,6 +8,8 @@ import time
 import micropython
 import date
 
+LOG_FREQUENCY_MS = 30000
+
 sd = SDCard(slot=2, freq=5000000)
 os.mount(sd, '/sd')
 
@@ -35,7 +37,7 @@ def callback(_timer):
     micropython.schedule(measure, 'measure')
 
 timer = Timer(0)
-timer.init(period=3000, mode=Timer.PERIODIC, callback=callback)
+timer.init(period=LOG_FREQUENCY_MS, mode=Timer.PERIODIC, callback=callback)
 
 led.pulse()
 
