@@ -7,7 +7,7 @@ class LED:
         self.freq = freq
         self.duration = duration
 
-    def flicker(self):
+    def pulse(self):
         pwm = PWM(self.pin, freq=self.freq)
         time.sleep_ms(self.duration)
         pwm.deinit()

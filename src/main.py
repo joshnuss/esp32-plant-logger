@@ -29,7 +29,7 @@ def measure(_name):
         str(moisture.value)
     ])
 
-    led.flicker()
+    led.pulse()
 
 def callback(_timer):
     micropython.schedule(measure, 'measure')
@@ -37,7 +37,7 @@ def callback(_timer):
 timer = Timer(0)
 timer.init(period=3000, mode=Timer.PERIODIC, callback=callback)
 
-led.flicker()
+led.pulse()
 
 while True:
     time.sleep(1000)
